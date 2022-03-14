@@ -1,16 +1,21 @@
-// import { SAVE_USER } from '../actions';
+import { ADD_EXPENSE, GET_CURRENCIES } from '../actions';
 
-// const INITIAL_STATE = {
-//   email: '',
-// };
+const INITIAL_STATE = {
+  expenses: [],
+  currencies: [],
+};
 
-// const user = (state = INITIAL_STATE, action) => {
-//   switch (action.type) {
-//   case SAVE_USER:
-//     return { ...state, email: action.payload };
-//   default:
-//     return state;
-//   }
-// };
+const wallet = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+  case ADD_EXPENSE:
+    return { ...state, expenses: [...state.expenses, action.payload] };
 
-// export default wallet;
+  case GET_CURRENCIES:
+    return { ...state, currencies: action.payload };
+
+  default:
+    return state;
+  }
+};
+
+export default wallet;
